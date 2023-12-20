@@ -1,0 +1,167 @@
+[gd_scene load_steps=17 format=3 uid="uid://bos8chbfqupxd"]
+
+[ext_resource type="Texture2D" uid="uid://d0rg6dkbvu0jb" path="res://textures/lv 0/skybox.png" id="1_a6wbe"]
+[ext_resource type="PackedScene" uid="uid://c7gog6n7gl8i7" path="res://scenes/traverser.tscn" id="1_uppgu"]
+[ext_resource type="Material" uid="uid://dmtfr7vxmye26" path="res://textures/testGrid.tres" id="2_rrdtx"]
+[ext_resource type="PackedScene" uid="uid://jqh4cmursrhv" path="res://scenes/coin.tscn" id="4_8stl4"]
+[ext_resource type="PackedScene" uid="uid://s0wdneswscq6" path="res://scenes/hud.tscn" id="5_ay8fc"]
+[ext_resource type="PackedScene" uid="uid://bortjurat32j2" path="res://scenes/gem.tscn" id="5_xbfg2"]
+[ext_resource type="PackedScene" uid="uid://mx1jefb7gsey" path="res://scenes/version_text.tscn" id="7_m85dq"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_skuxy"]
+panorama = ExtResource("1_a6wbe")
+filter = false
+
+[sub_resource type="Sky" id="Sky_e51h8"]
+sky_material = SubResource("PanoramaSkyMaterial_skuxy")
+
+[sub_resource type="Environment" id="Environment_cstxx"]
+background_mode = 2
+sky = SubResource("Sky_e51h8")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_cv8l1"]
+lightmap_size_hint = Vector2i(250, 135)
+material = ExtResource("2_rrdtx")
+uv2_padding = 0.0
+size = Vector3(25, 1, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l786s"]
+size = Vector3(25, 1, 25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n3lxo"]
+size = Vector3(26, 1, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_caebl"]
+size = Vector3(26, 1, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vtva"]
+size = Vector3(6, 1, 37)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xbukd"]
+size = Vector3(37, 1, 6.26318)
+
+[node name="TestingStage" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cstxx")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.514875, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_cv8l1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_l786s")
+
+[node name="Traverser" parent="." instance=ExtResource("1_uppgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12126, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.979276, 2.96983e-07, -0.202531, -0.116054, 0.819542, 0.561144, 0.165983, 0.573019, -0.802558, 9.53674e-07, 6.49648, -11.9189)
+light_energy = 0.435
+light_indirect_energy = 1.609
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 47.36
+light_bake_mode = 1
+
+[node name="hud" parent="." instance=ExtResource("5_ay8fc")]
+
+[node name="collectables" type="Node3D" parent="."]
+
+[node name="piece" parent="collectables" instance=ExtResource("5_xbfg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95946, 1.48594, 4.28098)
+
+[node name="piece2" parent="collectables" instance=ExtResource("5_xbfg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4208, 5.18041, 0)
+
+[node name="coin" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.148, 0.64251, 0)
+
+[node name="coin2" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.33103, 0.64251, 3.57606)
+
+[node name="coin3" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.21074, 0.64251, 0)
+
+[node name="coin4" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63199, 0.64251, 0.277054)
+
+[node name="coin5" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02604, 0.64251, 2.44977)
+
+[node name="coin6" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40971, 0.64251, 7.24053)
+
+[node name="coin7" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85323, 4.55519, -15.2051)
+
+[node name="coin8" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25512, 4.55519, -15.2742)
+
+[node name="coin9" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7294, 4.55519, 0)
+
+[node name="coin10" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.317, 4.55519, 13.5023)
+
+[node name="coin11" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0084, 4.55519, -4.12129)
+
+[node name="coin12" parent="collectables" instance=ExtResource("4_8stl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50697, 4.55519, 15.0485)
+
+[node name="VersionText" parent="." instance=ExtResource("7_m85dq")]
+
+[node name="Ramp" type="StaticBody3D" parent="."]
+transform = Transform3D(0.988228, 0.152986, 3.48787e-16, -0.152986, 0.988228, -3.48787e-16, -3.98041e-16, 2.91322e-16, 1, -0.644784, 1.31444, -9.49987)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ramp"]
+transform = Transform3D(1, 0, 0, 0, 1, -8.51039e-11, 0, -8.51039e-11, 1, 0, 0, 0)
+material_override = ExtResource("2_rrdtx")
+mesh = SubResource("BoxMesh_n3lxo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp"]
+transform = Transform3D(1, 0, 0, 0, 1, -8.51039e-11, 0, -8.51039e-11, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_caebl")
+
+[node name="Upper Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Upper Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4235, 3.29679, 0.0043993)
+material_override = ExtResource("2_rrdtx")
+mesh = SubResource("BoxMesh_3vtva")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Upper Floor"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -0.942966, 3.29679, 15.4972)
+material_override = ExtResource("2_rrdtx")
+mesh = SubResource("BoxMesh_3vtva")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Upper Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5552, 3.29679, 0.0043993)
+material_override = ExtResource("2_rrdtx")
+mesh = SubResource("BoxMesh_3vtva")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Upper Floor"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -0.865679, 3.29679, -15.4775)
+material_override = ExtResource("2_rrdtx")
+mesh = SubResource("BoxMesh_3vtva")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upper Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.964895, 3.29991, -15.5249)
+shape = SubResource("BoxShape3D_xbukd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Upper Floor"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 14.4455, 3.29991, 0.00970078)
+shape = SubResource("BoxShape3D_xbukd")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Upper Floor"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -16.3967, 3.29991, -0.102101)
+shape = SubResource("BoxShape3D_xbukd")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Upper Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.964895, 3.29991, 15.3782)
+shape = SubResource("BoxShape3D_xbukd")

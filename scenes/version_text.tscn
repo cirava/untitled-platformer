@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://mx1jefb7gsey"]
+
+[ext_resource type="FontFile" uid="uid://b8gaixbox0s7v" path="res://FreeSans.otf" id="1_50s2d"]
+[ext_resource type="Script" path="res://scripts/versionLabel.gd" id="1_x88sh"]
+
+[sub_resource type="Theme" id="Theme_qkqvu"]
+default_font = ExtResource("1_50s2d")
+default_font_size = 24
+
+[node name="VersionText" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="versionLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(2000, 2.08165e-12)
+layout_mode = 0
+offset_left = 9.0
+offset_top = 682.0
+offset_right = 2009.0
+offset_bottom = 722.0
+theme = SubResource("Theme_qkqvu")
+script = ExtResource("1_x88sh")

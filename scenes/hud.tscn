@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://s0wdneswscq6"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_0vwb8"]
+[ext_resource type="FontFile" uid="uid://6aunnp6cnxm2" path="res://ZCOOLKuaiLe-Regular.ttf" id="2_1vnwq"]
+[ext_resource type="Texture2D" uid="uid://vu3vvdsfc5f5" path="res://textures/ui/pieceIcon.png" id="2_8tgts"]
+[ext_resource type="Texture2D" uid="uid://dugrw6ma2bx5u" path="res://textures/ui/gemIcon.png" id="3_3w0y4"]
+
+[sub_resource type="Theme" id="Theme_anw2c"]
+default_font = ExtResource("2_1vnwq")
+default_font_size = 60
+
+[node name="hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -312.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0vwb8")
+
+[node name="gemCount" type="RichTextLabel" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 0
+offset_left = 94.0
+offset_top = 3.0
+offset_right = 854.0
+offset_bottom = 303.0
+theme = SubResource("Theme_anw2c")
+
+[node name="piecesCount" type="RichTextLabel" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 0
+offset_left = 94.0
+offset_top = 95.0
+offset_right = 854.0
+offset_bottom = 395.0
+theme = SubResource("Theme_anw2c")
+
+[node name="pieceIcon" type="Sprite2D" parent="."]
+position = Vector2(45, 132)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_8tgts")
+
+[node name="gemIcon" type="Sprite2D" parent="."]
+position = Vector2(45, 43)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_3w0y4")

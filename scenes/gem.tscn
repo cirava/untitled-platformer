@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bortjurat32j2"]
+
+[ext_resource type="Script" path="res://scripts/gem.gd" id="1_ck0sr"]
+[ext_resource type="AudioStream" uid="uid://lvdqoiutiuan" path="res://sounds/pieceGet.mp3" id="3_576cp"]
+[ext_resource type="PackedScene" uid="uid://cwqrvcenlx8sx" path="res://models/gem.glb" id="3_n6ysh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bvrus"]
+
+[node name="piece" type="Area3D"]
+script = ExtResource("1_ck0sr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bvrus")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46307, 0)
+light_color = Color(0.862745, 0.172549, 0.219608, 1)
+light_energy = 2.0
+
+[node name="pieceReady" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_576cp")
+
+[node name="gem" parent="." instance=ExtResource("3_n6ysh")]
+transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 2.08165e-12, 2.08165e-12, 2.08165e-12)
